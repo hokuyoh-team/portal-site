@@ -33,11 +33,6 @@
   --line: #0a0a0a;
   --tile-bg: #111111;
   --wm-opacity: 0.045;
-  --calendar-practice: #2563eb;
-  --calendar-game: #dc2626;
-  --calendar-scrimmage: #16a34a;
-  --calendar-league: #c85a2a;
-  --calendar-other: #6b7280;
 }
 
 * {
@@ -572,12 +567,6 @@ a {
   line-height: 1.15;
 }
 
-.calendar-chip--practice { --chip-color: var(--calendar-practice); }
-.calendar-chip--game { --chip-color: var(--calendar-game); }
-.calendar-chip--scrimmage { --chip-color: var(--calendar-scrimmage); }
-.calendar-chip--league { --chip-color: var(--calendar-league); }
-.calendar-chip--other { --chip-color: var(--calendar-other); }
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -599,11 +588,6 @@ a {
 .btn--line {
   background: transparent;
   color: var(--ink);
-}
-
-.btn.calendar-chip {
-  border-color: var(--chip-color);
-  color: var(--chip-color);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -709,36 +693,6 @@ a {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   font-family: "Plus Jakarta Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
-}
-
-.date-label--practice,
-.info-list__date--practice {
-  border-color: var(--calendar-practice);
-  color: var(--calendar-practice);
-}
-
-.date-label--game,
-.info-list__date--game {
-  border-color: var(--calendar-game);
-  color: var(--calendar-game);
-}
-
-.date-label--scrimmage,
-.info-list__date--scrimmage {
-  border-color: var(--calendar-scrimmage);
-  color: var(--calendar-scrimmage);
-}
-
-.date-label--league,
-.info-list__date--league {
-  border-color: var(--calendar-league);
-  color: var(--calendar-league);
-}
-
-.date-label--other,
-.info-list__date--other {
-  border-color: var(--calendar-other);
-  color: var(--calendar-other);
 }
 
 .info-list__tag {
