@@ -32,6 +32,36 @@
     return d.getFullYear() + '/' + pad2(d.getMonth() + 1) + '/' + pad2(d.getDate());
   }
 
+  function formatMonth(ms) {
+    if (ms == null) return '';
+    var d = new Date(ms);
+    return d.getFullYear() + '年' + (d.getMonth() + 1) + '月';
+  }
+
+  function renderGroupedList(rows, options) {
+    var groups = [];
+    rows.forEach(function (item) {
+      var label = options.groupLabel(item);
+      var latest = groups[groups.length - 1];
+      if (!latest || latest.label !== label) {
+        latest = { label: label, items: [] };
+        groups.push(latest);
+      }
+      latest.items.push(item);
+    });
+
+    return groups.map(function (group) {
+      return (
+        '<li class="video-group">' +
+        '<h3 class="video-group__title jp-heading">' + escapeHtml(group.label) + '</h3>' +
+        '<ul class="video-list video-list--grouped">' +
+        group.items.map(options.renderItem).join('') +
+        '</ul>' +
+        '</li>'
+      );
+    }).join('');
+  }
+
   // ページ内に対象の要素がなければ何もしない（index.html / all-videos.html の両方から
   // このファイルを読み込むが、一致する要素がある分だけ表示される）
   function loadSheetList(options) {
@@ -59,7 +89,9 @@
 
         rows.sort(function (a, b) { return b.sortKey - a.sortKey; });
         var latest = rows.slice(0, options.maxItems || 10);
-        listEl.innerHTML = latest.map(options.renderItem).join('');
+        listEl.innerHTML = options.groupLabel
+          ? renderGroupedList(latest, options)
+          : latest.map(options.renderItem).join('');
       })
       .catch(function () {
         listEl.innerHTML = '';
@@ -75,7 +107,8 @@
         sortKey: parseDate(cells[0] && cells[0].v),
         date: cells[0] && cells[0].f,
         title: [cells[1] && cells[1].v, cells[2] && cells[2].v].filter(Boolean).join(' vs '),
-        url: cells[3] && cells[3].v
+        url: cells[3] && cells[3].v,
+        category: cells[4] && cells[4].v
       };
     },
     renderItem: function (item) {
@@ -194,12 +227,18 @@
   loadSheetList(Object.assign({}, matchVideos, {
     listId: 'video-list-items-all',
     fallbackId: 'video-list-fallback-all',
-    maxItems: 1000
+    maxItems: 1000,
+    groupLabel: function (item) {
+      return item.category || formatMonth(item.sortKey);
+    }
   }));
 
   loadSheetList(Object.assign({}, practiceVideos, {
     listId: 'practice-list-items-all',
     fallbackId: 'practice-list-fallback-all',
-    maxItems: 1000
+    maxItems: 1000,
+    groupLabel: function (item) {
+      return formatMonth(item.sortKey);
+    }
   }));
 })();

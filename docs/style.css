@@ -709,6 +709,29 @@ a {
   border-bottom: 2px solid var(--ink);
 }
 
+.video-group {
+  margin: 0 0 26px;
+}
+
+.video-group__title {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 8px;
+  padding: 5px 10px;
+  border: 2px solid var(--line);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 15px;
+}
+
+.video-list--grouped {
+  margin-bottom: 0;
+}
+
+.video-list--grouped .video-item {
+  padding-block: 12px;
+}
+
 .video-list__loading {
   padding: 10px 0;
   color: var(--ink-soft);
