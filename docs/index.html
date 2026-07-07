@@ -24,9 +24,11 @@
     </a>
     <nav class="header__nav" aria-label="サイト内リンク">
       <a class="header__link jk" href="#news">お知らせ</a>
+      <a class="header__line-link jk" href="#LINE_URL">LINE</a>
       <a class="header__icon-link" href="https://www.instagram.com/hokuyohboys?igsh=MXd3dXAxMHlmZWVmdQ==" target="_blank" rel="noopener" aria-label="Instagramを開く">
         <img src="assets/icons/instagram.png" alt="" aria-hidden="true">
       </a>
+      <span class="header__notice jk">更新はLINEで通知します</span>
     </nav>
   </div>
 </header>
@@ -175,11 +177,11 @@
           <div class="tile__actions tile__actions--stack">
             <a class="btn btn--fill jk" href="https://calendar.google.com/calendar/embed?src=f33b2dd6ae117cc3875c1f04dac2b86de94c0e66df3f69db5e971a52a82ee30d%40group.calendar.google.com&src=a0aeb42083234277889b8c1ef3d94ad4afe59b2971ac325bb88499e631e10609%40group.calendar.google.com&src=bff2c3454f69b077512aec52fa0835a6007d38467eb1fc2a16837f255dcfd620%40group.calendar.google.com&src=8ee065645703dd0fa18f87e4f497f3f7c80d64333608c443c6b4885d3b468a86%40group.calendar.google.com&src=2fd1514a8170628d2e4fa2ccfedb0fc47c7da51aa8dce6d6b761136d21fb9f1b%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">全部の予定を見る</a>
             <div class="tile__actions tile__actions--wrap">
-              <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=f33b2dd6ae117cc3875c1f04dac2b86de94c0e66df3f69db5e971a52a82ee30d%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">練習</a>
-              <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=a0aeb42083234277889b8c1ef3d94ad4afe59b2971ac325bb88499e631e10609%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">試合・大会</a>
-              <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=bff2c3454f69b077512aec52fa0835a6007d38467eb1fc2a16837f255dcfd620%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">練習試合</a>
-              <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=8ee065645703dd0fa18f87e4f497f3f7c80d64333608c443c6b4885d3b468a86%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">リーグ戦</a>
-              <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=2fd1514a8170628d2e4fa2ccfedb0fc47c7da51aa8dce6d6b761136d21fb9f1b%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">その他</a>
+              <a class="btn btn--line calendar-chip calendar-chip--practice jk" href="https://calendar.google.com/calendar/embed?src=f33b2dd6ae117cc3875c1f04dac2b86de94c0e66df3f69db5e971a52a82ee30d%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">練習</a>
+              <a class="btn btn--line calendar-chip calendar-chip--game jk" href="https://calendar.google.com/calendar/embed?src=a0aeb42083234277889b8c1ef3d94ad4afe59b2971ac325bb88499e631e10609%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">試合・大会</a>
+              <a class="btn btn--line calendar-chip calendar-chip--scrimmage jk" href="https://calendar.google.com/calendar/embed?src=bff2c3454f69b077512aec52fa0835a6007d38467eb1fc2a16837f255dcfd620%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">練習試合</a>
+              <a class="btn btn--line calendar-chip calendar-chip--league jk" href="https://calendar.google.com/calendar/embed?src=8ee065645703dd0fa18f87e4f497f3f7c80d64333608c443c6b4885d3b468a86%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">リーグ戦</a>
+              <a class="btn btn--line calendar-chip calendar-chip--other jk" href="https://calendar.google.com/calendar/embed?src=2fd1514a8170628d2e4fa2ccfedb0fc47c7da51aa8dce6d6b761136d21fb9f1b%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">その他</a>
             </div>
           </div>
         </div>
@@ -226,9 +228,9 @@
           </div>
           <ul class="info-list">
             <!-- 予定はGoogleカレンダーの内容にあわせて手動で更新してください -->
-            <li><span class="info-list__date jk">07/12(日)</span><span>通常練習 9:00〜12:00 @北陽</span></li>
-            <li><span class="info-list__date jk">07/15(水)</span><span>翌月分の当番不可日 連絡締切</span></li>
-            <li><span class="info-list__date jk">07/22(水)</span><span>通常練習 17:00〜19:00 @日輪体育館</span></li>
+            <li><span class="info-list__date info-list__date--practice jk">07/12(日)</span><span>通常練習 9:00〜12:00 @北陽</span></li>
+            <li data-deadline="2026-07-15"><span class="info-list__date info-list__date--other jk">07/15(水)</span><span>翌月分の当番不可日 連絡締切 <span class="deadline-badge" data-deadline-badge></span></span></li>
+            <li><span class="info-list__date info-list__date--practice jk">07/22(水)</span><span>通常練習 17:00〜19:00 @日輪体育館</span></li>
           </ul>
         </div>
 
@@ -281,10 +283,12 @@
   </div>
   <div class="footer__inner">
     <p>ご不明な点はLINEグループまでご連絡ください。</p>
+    <p class="footer__updated jk" data-last-modified>最終更新：--/--/--</p>
     <p class="footer__copyright jk">&copy; 2026 HOKUYOH BOYS BASKETBALL</p>
   </div>
 </footer>
 
+<script src="site.js" defer></script>
 <script src="videos.js" defer></script>
 
 </body>

@@ -33,6 +33,11 @@
   --line: #0a0a0a;
   --tile-bg: #111111;
   --wm-opacity: 0.045;
+  --calendar-practice: #2563eb;
+  --calendar-game: #dc2626;
+  --calendar-scrimmage: #16a34a;
+  --calendar-league: #c85a2a;
+  --calendar-other: #6b7280;
 }
 
 * {
@@ -173,6 +178,20 @@ a {
   white-space: nowrap;
 }
 
+.header__line-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 8px 14px;
+  border: 2px solid #06c755;
+  background: #06c755;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
 .header__icon-link {
   display: inline-flex;
   align-items: center;
@@ -190,11 +209,24 @@ a {
   display: block;
 }
 
+.header__notice {
+  flex-basis: 100%;
+  color: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 700;
+  text-align: right;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .header__link:hover,
   .header__icon-link:hover {
     background: var(--ink);
     color: var(--paper);
+  }
+
+  .header__line-link:hover {
+    background: #04a948;
+    border-color: #04a948;
   }
 }
 
@@ -559,6 +591,12 @@ a {
   line-height: 1.15;
 }
 
+.calendar-chip--practice { --chip-color: var(--calendar-practice); }
+.calendar-chip--game { --chip-color: var(--calendar-game); }
+.calendar-chip--scrimmage { --chip-color: var(--calendar-scrimmage); }
+.calendar-chip--league { --chip-color: var(--calendar-league); }
+.calendar-chip--other { --chip-color: var(--calendar-other); }
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -580,6 +618,11 @@ a {
 .btn--line {
   background: transparent;
   color: var(--ink);
+}
+
+.btn.calendar-chip {
+  border-color: var(--chip-color);
+  color: var(--chip-color);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -687,6 +730,36 @@ a {
   font-family: "Plus Jakarta Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
 }
 
+.date-label--practice,
+.info-list__date--practice {
+  border-color: var(--calendar-practice);
+  color: var(--calendar-practice);
+}
+
+.date-label--game,
+.info-list__date--game {
+  border-color: var(--calendar-game);
+  color: var(--calendar-game);
+}
+
+.date-label--scrimmage,
+.info-list__date--scrimmage {
+  border-color: var(--calendar-scrimmage);
+  color: var(--calendar-scrimmage);
+}
+
+.date-label--league,
+.info-list__date--league {
+  border-color: var(--calendar-league);
+  color: var(--calendar-league);
+}
+
+.date-label--other,
+.info-list__date--other {
+  border-color: var(--calendar-other);
+  color: var(--calendar-other);
+}
+
 .info-list__tag {
   display: inline-block;
   font-size: 10px;
@@ -697,6 +770,32 @@ a {
   padding: 2px 6px;
   margin-right: 8px;
   vertical-align: 2px;
+}
+
+.deadline-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 3px 7px;
+  border: 2px solid var(--line);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  vertical-align: 1px;
+}
+
+.deadline-badge--due {
+  background: #b42318;
+  color: #ffffff;
+}
+
+.deadline-badge--closed {
+  background: #8a8a8a;
+  color: #ffffff;
+}
+
+.is-deadline-closed {
+  color: var(--ink-soft);
 }
 
 /* ===== 試合動画・練習メニュー動画一覧（スプレッドシートから読み込み） ===== */
@@ -858,6 +957,13 @@ a {
   z-index: 1;
   max-width: 1080px;
   margin: 0 auto;
+}
+
+.footer__updated {
+  margin: 10px 0 0;
+  color: #cfcfcf;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .footer__copyright {

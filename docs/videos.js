@@ -38,6 +38,23 @@
     return d.getFullYear() + '年' + (d.getMonth() + 1) + '月';
   }
 
+  function isRecent(sortKey) {
+    return sortKey != null && (Date.now() - sortKey) <= 7 * 24 * 60 * 60 * 1000;
+  }
+
+  function renderNewTag(item) {
+    return isRecent(item.sortKey) ? '<span class="info-list__tag">NEW</span>' : '';
+  }
+
+  function categoryClass(value, fallback) {
+    var label = String(value || fallback || '').trim();
+    if (label.indexOf('練習試合') !== -1) return 'date-label--scrimmage';
+    if (label.indexOf('リーグ') !== -1) return 'date-label--league';
+    if (label.indexOf('練習') !== -1) return 'date-label--practice';
+    if (label.indexOf('試合') !== -1 || label.indexOf('大会') !== -1) return 'date-label--game';
+    return 'date-label--other';
+  }
+
   function renderGroupedList(rows, options) {
     var groups = [];
     rows.forEach(function (item) {
@@ -114,8 +131,8 @@
     renderItem: function (item) {
       return (
         '<li class="video-item">' +
-        '<span class="video-item__date">' + escapeHtml(item.date) + '</span>' +
-        '<span class="video-item__title">' + escapeHtml(item.title) + '</span>' +
+        '<span class="video-item__date ' + categoryClass(item.category, '試合・大会') + '">' + escapeHtml(item.date) + '</span>' +
+        '<span class="video-item__title">' + renderNewTag(item) + escapeHtml(item.title) + '</span>' +
         '<a class="video-item__link" href="' + escapeAttr(item.url) + '" target="_blank" rel="noopener">▶ 見る</a>' +
         '</li>'
       );
@@ -126,8 +143,8 @@
     renderItem: function (item) {
       return (
         '<li>' +
-        '<span class="today-video-list__date">' + escapeHtml(item.date) + '</span>' +
-        '<a href="' + escapeAttr(item.url) + '" target="_blank" rel="noopener">' + escapeHtml(item.title) + '</a>' +
+        '<span class="today-video-list__date ' + categoryClass(item.category, '試合・大会') + '">' + escapeHtml(item.date) + '</span>' +
+        '<a href="' + escapeAttr(item.url) + '" target="_blank" rel="noopener">' + renderNewTag(item) + escapeHtml(item.title) + '</a>' +
         '</li>'
       );
     }
@@ -151,8 +168,8 @@
       if (item.name) title += '（' + item.name + 'さん）';
       return (
         '<li class="video-item">' +
-        '<span class="video-item__date">' + escapeHtml(item.date) + '</span>' +
-        '<span class="video-item__title">' + escapeHtml(title) + '</span>' +
+        '<span class="video-item__date ' + categoryClass(null, '練習') + '">' + escapeHtml(item.date) + '</span>' +
+        '<span class="video-item__title">' + renderNewTag(item) + escapeHtml(title) + '</span>' +
         '<a class="video-item__link" href="' + escapeAttr(item.url) + '" target="_blank" rel="noopener">▶ 見る</a>' +
         '</li>'
       );
@@ -172,23 +189,19 @@
       };
     },
     renderItem: function (item) {
-      var isNew = (Date.now() - item.sortKey) <= 7 * 24 * 60 * 60 * 1000;
-      var tag = isNew ? '<span class="info-list__tag">NEW</span>' : '';
       return (
         '<li><span class="info-list__date">' + escapeHtml(item.date) + '</span>' +
-        tag + escapeHtml(item.content) + '</li>'
+        renderNewTag(item) + escapeHtml(item.content) + '</li>'
       );
     }
   };
 
   var todayAnnouncement = Object.assign({}, announcements, {
     renderItem: function (item) {
-      var isNew = (Date.now() - item.sortKey) <= 7 * 24 * 60 * 60 * 1000;
-      var tag = isNew ? '<span class="info-list__tag">NEW</span>' : '';
       return (
         '<li>' +
         '<span class="today-video-list__date">' + escapeHtml(item.date) + '</span>' +
-        '<span>' + tag + escapeHtml(item.content) + '</span>' +
+        '<span>' + renderNewTag(item) + escapeHtml(item.content) + '</span>' +
         '</li>'
       );
     }
