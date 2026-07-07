@@ -185,8 +185,8 @@ a {
 }
 
 .header__icon-link img {
-  width: 21px;
-  height: 21px;
+  width: 24px;
+  height: 24px;
   display: block;
 }
 
@@ -195,10 +195,6 @@ a {
   .header__icon-link:hover {
     background: var(--ink);
     color: var(--paper);
-  }
-
-  .header__icon-link:hover img {
-    filter: invert(1);
   }
 }
 
