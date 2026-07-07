@@ -36,6 +36,30 @@
 
 <main>
 
+  <section class="today" aria-label="今週やること">
+    <div class="today__head">
+      <span class="section__eyebrow jk">THIS WEEK</span>
+      <h2 class="today__title jp-heading">今週やること</h2>
+    </div>
+    <div class="today__grid">
+      <a class="today__item today__item--strong" href="https://calendar.google.com/calendar/embed?src=f33b2dd6ae117cc3875c1f04dac2b86de94c0e66df3f69db5e971a52a82ee30d%40group.calendar.google.com&src=a0aeb42083234277889b8c1ef3d94ad4afe59b2971ac325bb88499e631e10609%40group.calendar.google.com&src=bff2c3454f69b077512aec52fa0835a6007d38467eb1fc2a16837f255dcfd620%40group.calendar.google.com&src=8ee065645703dd0fa18f87e4f497f3f7c80d64333608c443c6b4885d3b468a86%40group.calendar.google.com&src=2fd1514a8170628d2e4fa2ccfedb0fc47c7da51aa8dce6d6b761136d21fb9f1b%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">
+        <span class="today__label jk">Schedule</span>
+        <strong>全部の予定を確認</strong>
+        <span>練習・試合・イベントをまとめて見る</span>
+      </a>
+      <a class="today__item" href="#news">
+        <span class="today__label jk">News</span>
+        <strong>お知らせを見る</strong>
+        <span>直近の連絡事項を確認</span>
+      </a>
+      <a class="today__item" href="https://docs.google.com/forms/d/e/1FAIpQLSc7Wv6tM5NeQMb01ODVOfYSDfaX3iw3iLRhPdbBzwfExj3HMw/viewform" target="_blank" rel="noopener">
+        <span class="today__label jk">Duty</span>
+        <strong>当番不可日を連絡</strong>
+        <span>翌月分は15日までに回答</span>
+      </a>
+    </div>
+  </section>
+
   <section class="menu" aria-label="メニュー">
     <div class="menu__lede">
       <span class="display">MENU</span>
@@ -51,7 +75,7 @@
           <h2 class="tile__title jp-heading">お知らせ</h2>
           <p class="tile__eyebrow jk">News</p>
           <p class="tile__desc">チームからの連絡事項</p>
-          <div class="tile__actions"><span class="btn btn--fill jk">確認する</span></div>
+          <div class="tile__actions"><span class="btn btn--fill jk">お知らせを見る</span></div>
         </div>
       </a>
 
@@ -63,7 +87,7 @@
           <h2 class="tile__title jp-heading">試合動画</h2>
           <p class="tile__eyebrow jk">Game Videos</p>
           <p class="tile__desc">YouTube限定公開の動画リンク一覧です</p>
-          <div class="tile__actions"><span class="btn btn--fill jk">動画一覧を見る</span></div>
+          <div class="tile__actions"><span class="btn btn--fill jk">試合動画を見る</span></div>
         </div>
       </a>
 
@@ -76,8 +100,8 @@
           <p class="tile__eyebrow jk">Practice Videos</p>
           <p class="tile__desc">保護者おすすめの動画リンク集です</p>
           <div class="tile__actions">
-            <a class="btn btn--fill jk" href="#videos-practice">見る</a>
-            <a class="btn btn--line jk" href="https://docs.google.com/forms/d/e/1FAIpQLSfDgkNKnWEdS__shD3UpoqWKWRAsYk61wl57OmT8T6432GQew/viewform" target="_blank" rel="noopener">共有する</a>
+            <a class="btn btn--fill jk" href="#videos-practice">動画を見る</a>
+            <a class="btn btn--line jk" href="https://docs.google.com/forms/d/e/1FAIpQLSfDgkNKnWEdS__shD3UpoqWKWRAsYk61wl57OmT8T6432GQew/viewform" target="_blank" rel="noopener">動画を投稿</a>
           </div>
         </div>
       </div>
@@ -90,7 +114,7 @@
           <h2 class="tile__title jp-heading">チーム写真</h2>
           <p class="tile__eyebrow jk">Team Photos</p>
           <p class="tile__desc">チームの写真をまとめています</p>
-          <div class="tile__actions"><span class="btn btn--fill jk">ドライブで見る</span></div>
+          <div class="tile__actions"><span class="btn btn--fill jk">写真を見る</span></div>
         </div>
       </a>
 
@@ -102,7 +126,7 @@
           <h2 class="tile__title jp-heading">配車希望フォーム</h2>
           <p class="tile__eyebrow jk">Carpool</p>
           <p class="tile__desc">配車希望はこちらのフォームからご回答ください</p>
-          <div class="tile__actions"><span class="btn btn--fill jk">フォームを開く</span></div>
+          <div class="tile__actions"><span class="btn btn--fill jk">配車を回答する</span></div>
         </div>
       </a>
 
@@ -117,7 +141,7 @@
           <div class="tile__actions">
             <a class="btn btn--fill jk" href="https://docs.google.com/forms/d/e/1FAIpQLSexc1GUbnEHf-nYrasL71NvFEJRjsMeRMphoxka0smc10kjNA/viewform" target="_blank" rel="noopener">基本<br>フォーム</a>
             <!-- TODO: サンプルURLです。担当者から本番の「当番不可日連絡フォーム」URLを受け取り次第、差し替えてください -->
-            <a class="btn btn--line jk" href="https://docs.google.com/forms/d/e/1FAIpQLSc7Wv6tM5NeQMb01ODVOfYSDfaX3iw3iLRhPdbBzwfExj3HMw/viewform" target="_blank" rel="noopener">不可日連絡フォーム</a>
+            <a class="btn btn--line jk" href="https://docs.google.com/forms/d/e/1FAIpQLSc7Wv6tM5NeQMb01ODVOfYSDfaX3iw3iLRhPdbBzwfExj3HMw/viewform" target="_blank" rel="noopener">不可日連絡</a>
           </div>
         </div>
       </div>
@@ -130,13 +154,15 @@
           <h2 class="tile__title jp-heading">予定カレンダー</h2>
           <p class="tile__eyebrow jk">Calendar</p>
           <p class="tile__desc">練習・試合などの予定</p>
-          <div class="tile__actions tile__actions--wrap">
-            <a class="btn btn--fill jk" href="https://calendar.google.com/calendar/embed?src=f33b2dd6ae117cc3875c1f04dac2b86de94c0e66df3f69db5e971a52a82ee30d%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">練習</a>
-            <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=a0aeb42083234277889b8c1ef3d94ad4afe59b2971ac325bb88499e631e10609%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">試合・大会</a>
-            <a class="btn btn--fill jk" href="https://calendar.google.com/calendar/embed?src=bff2c3454f69b077512aec52fa0835a6007d38467eb1fc2a16837f255dcfd620%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">練習試合</a>
-            <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=8ee065645703dd0fa18f87e4f497f3f7c80d64333608c443c6b4885d3b468a86%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">リーグ戦</a>
-            <a class="btn btn--fill jk" href="https://calendar.google.com/calendar/embed?src=2fd1514a8170628d2e4fa2ccfedb0fc47c7da51aa8dce6d6b761136d21fb9f1b%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">その他</a>
-            <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=f33b2dd6ae117cc3875c1f04dac2b86de94c0e66df3f69db5e971a52a82ee30d%40group.calendar.google.com&src=a0aeb42083234277889b8c1ef3d94ad4afe59b2971ac325bb88499e631e10609%40group.calendar.google.com&src=bff2c3454f69b077512aec52fa0835a6007d38467eb1fc2a16837f255dcfd620%40group.calendar.google.com&src=8ee065645703dd0fa18f87e4f497f3f7c80d64333608c443c6b4885d3b468a86%40group.calendar.google.com&src=2fd1514a8170628d2e4fa2ccfedb0fc47c7da51aa8dce6d6b761136d21fb9f1b%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">全部の予定一覧</a>
+          <div class="tile__actions tile__actions--stack">
+            <a class="btn btn--fill jk" href="https://calendar.google.com/calendar/embed?src=f33b2dd6ae117cc3875c1f04dac2b86de94c0e66df3f69db5e971a52a82ee30d%40group.calendar.google.com&src=a0aeb42083234277889b8c1ef3d94ad4afe59b2971ac325bb88499e631e10609%40group.calendar.google.com&src=bff2c3454f69b077512aec52fa0835a6007d38467eb1fc2a16837f255dcfd620%40group.calendar.google.com&src=8ee065645703dd0fa18f87e4f497f3f7c80d64333608c443c6b4885d3b468a86%40group.calendar.google.com&src=2fd1514a8170628d2e4fa2ccfedb0fc47c7da51aa8dce6d6b761136d21fb9f1b%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">全部の予定を見る</a>
+            <div class="tile__actions tile__actions--wrap">
+              <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=f33b2dd6ae117cc3875c1f04dac2b86de94c0e66df3f69db5e971a52a82ee30d%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">練習</a>
+              <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=a0aeb42083234277889b8c1ef3d94ad4afe59b2971ac325bb88499e631e10609%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">試合・大会</a>
+              <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=bff2c3454f69b077512aec52fa0835a6007d38467eb1fc2a16837f255dcfd620%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">練習試合</a>
+              <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=8ee065645703dd0fa18f87e4f497f3f7c80d64333608c443c6b4885d3b468a86%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">リーグ戦</a>
+              <a class="btn btn--line jk" href="https://calendar.google.com/calendar/embed?src=2fd1514a8170628d2e4fa2ccfedb0fc47c7da51aa8dce6d6b761136d21fb9f1b%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">その他</a>
+            </div>
           </div>
         </div>
       </div>
@@ -151,7 +177,7 @@
           <p class="tile__eyebrow jk">Tournament Docs</p>
           <p class="tile__desc">大会案内や資料など</p>
           <div class="tile__actions">
-            <a class="btn btn--fill jk" href="https://drive.google.com/drive/folders/1o-R9FhZq-f7QU7wPO_rIx9HqpvuDlwAym5HY-eBxT8ukphk2DDoiSA0kKW3P3Z1fhG0e75tB?usp=drive_link" target="_blank" rel="noopener">見る</a>
+            <a class="btn btn--fill jk" href="https://drive.google.com/drive/folders/1o-R9FhZq-f7QU7wPO_rIx9HqpvuDlwAym5HY-eBxT8ukphk2DDoiSA0kKW3P3Z1fhG0e75tB?usp=drive_link" target="_blank" rel="noopener">資料を見る</a>
             <a class="btn btn--line jk" href="https://docs.google.com/forms/d/e/1FAIpQLSfRKfWQB95q3oewC-67UZIcWHzhofkTNKBOswudCxiXgHa-Vg/viewform" target="_blank" rel="noopener">アップロード</a>
           </div>
         </div>
@@ -182,9 +208,9 @@
           </div>
           <ul class="info-list">
             <!-- 予定はGoogleカレンダーの内容にあわせて手動で更新してください -->
-            <li><span class="info-list__date jk">07/06(日)</span><span>練習 9:00〜12:00 @体育館</span></li>
-            <li><span class="info-list__date jk">07/12(土)</span><span>練習試合 vs ◯◯ミニバス</span></li>
-            <li><span class="info-list__date jk">07/13(日)</span><span>練習 9:00〜12:00 @体育館</span></li>
+            <li><span class="info-list__date jk">07/12(日)</span><span>通常練習 9:00〜12:00 @北陽</span></li>
+            <li><span class="info-list__date jk">07/15(水)</span><span>翌月分の当番不可日 連絡締切</span></li>
+            <li><span class="info-list__date jk">07/22(水)</span><span>通常練習 17:00〜19:00 @日輪体育館</span></li>
           </ul>
         </div>
 

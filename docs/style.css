@@ -209,6 +209,77 @@ a {
   font-size: 15px;
 }
 
+/* ===== 今週やること ===== */
+.today {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 12px 24px 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.today__head {
+  margin-bottom: 16px;
+}
+
+.today__title {
+  margin: 0;
+  font-size: 23px;
+}
+
+.today__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 760px) {
+  .today__grid {
+    grid-template-columns: 1.35fr 1fr 1fr;
+  }
+}
+
+.today__item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 118px;
+  border: 2px solid var(--line);
+  padding: 18px;
+  background: var(--paper);
+}
+
+.today__item--strong {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.today__label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--rust);
+  text-transform: uppercase;
+}
+
+.today__item--strong .today__label {
+  color: #f2a077;
+}
+
+.today__item strong {
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.today__item span:last-child {
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.today__item--strong span:last-child {
+  color: #d8d8d8;
+}
+
 /* ===== メニュー（写真タイル） ===== */
 .menu {
   max-width: 1080px;
@@ -348,6 +419,10 @@ a {
 .tile__actions {
   display: flex;
   gap: 8px;
+}
+
+.tile__actions--stack {
+  flex-direction: column;
 }
 
 .tile__actions--wrap {
