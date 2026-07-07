@@ -157,12 +157,49 @@ a {
   margin-top: 5px;
 }
 
+.header__nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .header__link {
   font-size: 13px;
   font-weight: 700;
   padding: 10px 22px;
   border: 2px solid var(--line);
   white-space: nowrap;
+}
+
+.header__icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--line);
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.header__icon-link img {
+  width: 21px;
+  height: 21px;
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .header__link:hover,
+  .header__icon-link:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .header__icon-link:hover img {
+    filter: invert(1);
+  }
 }
 
 /* ===== ヒーロー ===== */
