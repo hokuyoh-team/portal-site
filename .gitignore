@@ -1,4 +1,5 @@
 .DS_Store
 *.ics
+handover/
 CODEX_MIGRATION_INSTRUCTIONS.md
 INFRA_HANDOVER.md
