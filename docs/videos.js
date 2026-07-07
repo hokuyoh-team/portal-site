@@ -148,6 +148,24 @@
     }
   };
 
+  var todayAnnouncement = Object.assign({}, announcements, {
+    renderItem: function (item) {
+      var isNew = (Date.now() - item.sortKey) <= 7 * 24 * 60 * 60 * 1000;
+      var tag = isNew ? '<span class="info-list__tag">NEW</span>' : '';
+      return (
+        '<li>' +
+        '<span class="today-video-list__date">' + escapeHtml(item.date) + '</span>' +
+        '<span>' + tag + escapeHtml(item.content) + '</span>' +
+        '</li>'
+      );
+    }
+  });
+
+  loadSheetList(Object.assign({}, todayAnnouncement, {
+    listId: 'today-news-list-items',
+    maxItems: 1
+  }));
+
   loadSheetList(Object.assign({}, announcements, {
     listId: 'news-list-items',
     fallbackId: 'news-list-fallback',
