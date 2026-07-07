@@ -1,0 +1,20 @@
+{
+  "name": "北陽男子ミニバス ポータル",
+  "short_name": "北陽ポータル",
+  "start_url": "/portal-site/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#c85a2a",
+  "icons": [
+    {
+      "src": "assets/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
