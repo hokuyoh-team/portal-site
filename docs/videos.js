@@ -89,6 +89,17 @@
     }
   };
 
+  var todayMatchVideos = Object.assign({}, matchVideos, {
+    renderItem: function (item) {
+      return (
+        '<li>' +
+        '<span class="today-video-list__date">' + escapeHtml(item.date) + '</span>' +
+        '<a href="' + escapeAttr(item.url) + '" target="_blank" rel="noopener">' + escapeHtml(item.title) + '</a>' +
+        '</li>'
+      );
+    }
+  });
+
   // 練習メニュー動画：投稿フォームの回答一覧（タイムスタンプ｜URL｜タイトル・おすすめポイント｜お名前）
   var practiceVideos = {
     sheetId: '1ega5Ifh2ofvAGzc5wyMstgb_cxGswxYnz0XauzWERcs',
@@ -144,6 +155,11 @@
   }));
 
   // ホーム画面（index.html）：最新10件だけ表示
+  loadSheetList(Object.assign({}, todayMatchVideos, {
+    listId: 'today-video-list-items',
+    maxItems: 3
+  }));
+
   loadSheetList(Object.assign({}, matchVideos, {
     listId: 'video-list-items',
     fallbackId: 'video-list-fallback',
