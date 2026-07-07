@@ -172,7 +172,7 @@
     maxItems: 5
   }));
 
-  // ホーム画面（index.html）：最新10件だけ表示
+  // ホーム画面（index.html）：一覧が長くなりすぎないよう最新分だけ表示
   loadSheetList(Object.assign({}, todayMatchVideos, {
     listId: 'today-video-list-items',
     maxItems: 3
@@ -181,13 +181,13 @@
   loadSheetList(Object.assign({}, matchVideos, {
     listId: 'video-list-items',
     fallbackId: 'video-list-fallback',
-    maxItems: 10
+    maxItems: 5
   }));
 
   loadSheetList(Object.assign({}, practiceVideos, {
     listId: 'practice-list-items',
     fallbackId: 'practice-list-fallback',
-    maxItems: 10
+    maxItems: 5
   }));
 
   // 全件一覧ページ（all-videos.html）：件数制限なし

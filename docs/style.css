@@ -495,6 +495,37 @@ a {
   flex-basis: 100%;
 }
 
+.tile--calendar .tile__caption {
+  gap: 6px;
+}
+
+.tile--calendar .tile__desc {
+  flex: 0;
+}
+
+.tile--calendar .tile__actions--stack {
+  gap: 7px;
+  margin-top: auto;
+}
+
+.tile--calendar .tile__actions--stack > .btn {
+  padding-block: 12px;
+}
+
+.tile--calendar .tile__actions--wrap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.tile--calendar .tile__actions--wrap .btn {
+  flex: none;
+  min-height: 30px;
+  padding: 6px 7px;
+  font-size: 11px;
+  line-height: 1.15;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
