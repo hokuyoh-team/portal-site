@@ -628,7 +628,7 @@ a {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: #fff;
+  color: #ffffff !important;
   background: var(--rust);
   padding: 2px 6px;
   margin-right: 8px;
