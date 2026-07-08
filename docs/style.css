@@ -493,6 +493,7 @@ a {
 .menu__grid > .tile:nth-child(6) { animation-delay: 0.3s; }
 .menu__grid > .tile:nth-child(7) { animation-delay: 0.36s; }
 .menu__grid > .tile:nth-child(8) { animation-delay: 0.42s; }
+.menu__grid > .tile:nth-child(9) { animation-delay: 0.48s; }
 
 @media (hover: hover) and (pointer: fine) {
   .tile:hover {
@@ -702,6 +703,335 @@ a {
 
 @media (min-width: 720px) {
   .columns { grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== バスケを知る ===== */
+.guide-page {
+  background:
+    linear-gradient(90deg, rgba(10, 10, 10, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(10, 10, 10, 0.035) 1px, transparent 1px),
+    var(--paper);
+  background-size: 32px 32px;
+}
+
+.guide-hero {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 72px 24px 44px;
+  border-bottom: 2px solid var(--line);
+}
+
+.guide-hero__content {
+  max-width: 760px;
+}
+
+.guide-hero__title {
+  margin: 0;
+  font-size: clamp(38px, 8vw, 78px);
+  line-height: 1.05;
+}
+
+.guide-hero__text {
+  max-width: 640px;
+  margin: 20px 0 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+}
+
+.guide-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.guide-hero__actions .btn {
+  flex: 0 1 auto;
+  min-width: 138px;
+}
+
+.guide-hero__actions--left {
+  margin-top: 20px;
+}
+
+.guide-section {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 52px 24px;
+  border-bottom: 2px solid var(--line);
+}
+
+.guide-section--muted {
+  border-bottom: none;
+}
+
+.guide-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.guide-source-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 760px) {
+  .guide-source-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 680px) {
+  .guide-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 980px) {
+  .guide-card-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .guide-card-grid--compact {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.guide-card,
+.guide-source-card,
+.guide-rule,
+.guide-watch,
+.guide-panel,
+.quiz-card {
+  border: 2px solid var(--line);
+  background: var(--paper);
+}
+
+.guide-source-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 210px;
+  padding: 18px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.guide-source-card__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 32px;
+  border: 2px solid var(--line);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.guide-source-card h3 {
+  margin: 0;
+  font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.guide-source-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+  flex: 1;
+}
+
+.guide-source-card__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 2px solid var(--line);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.guide-source-card--pending .guide-source-card__link {
+  background: rgba(10, 10, 10, 0.06);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .guide-source-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px -14px rgba(10, 10, 10, 0.3);
+  }
+
+  .guide-source-card:hover .guide-source-card__link {
+    background: var(--ink);
+    color: var(--paper);
+  }
+}
+
+.guide-card {
+  padding: 18px;
+  min-height: 170px;
+}
+
+.guide-card h3,
+.guide-rule h3,
+.guide-watch h3,
+.quiz-card h3 {
+  margin: 0 0 8px;
+  font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.guide-card p,
+.guide-rule p,
+.guide-watch p,
+.guide-panel p,
+.quiz-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.guide-rule-list {
+  display: grid;
+  gap: 12px;
+}
+
+.guide-rule {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  padding: 16px;
+}
+
+.guide-rule__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--line);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.guide-watch-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 780px) {
+  .guide-watch-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.guide-watch,
+.guide-panel,
+.quiz-card {
+  padding: 20px;
+}
+
+.guide-check-list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.guide-check-list li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 14px;
+}
+
+.guide-check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--line);
+  background: var(--rust);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.quiz-list {
+  display: grid;
+  gap: 16px;
+}
+
+.quiz-card__choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.quiz-card__choices button {
+  appearance: none;
+  border: 2px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 10px 12px;
+  min-height: 44px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.quiz-card__choices button.is-correct {
+  background: #0f5132;
+  color: #ffffff;
+}
+
+.quiz-card__choices button.is-wrong {
+  background: #b42318;
+  color: #ffffff;
+}
+
+.quiz-card__answer {
+  margin-top: 14px !important;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--ink) !important;
+}
+
+@media (max-width: 560px) {
+  .guide-hero {
+    padding: 48px 16px 36px;
+  }
+
+  .guide-section {
+    padding: 42px 16px;
+  }
+
+  .guide-hero__actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .guide-rule {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-card__choices button {
+    flex: 1 1 100%;
+  }
 }
 
 /* 今後の予定（手入力）・お知らせ（スプレッドシート自動表示）共通のリスト */

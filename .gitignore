@@ -1,5 +1,6 @@
 .DS_Store
 *.ics
+.official_sources_tmp/
 handover/
 CODEX_MIGRATION_INSTRUCTIONS.md
 INFRA_HANDOVER.md
