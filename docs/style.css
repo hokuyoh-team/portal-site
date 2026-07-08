@@ -1034,6 +1034,236 @@ a {
   }
 }
 
+/* ===== ポータルコーチ：チャット風UI ===== */
+.coach-page {
+  background: var(--paper);
+}
+
+.coach-page .section__eyebrow {
+  letter-spacing: 0.18em;
+}
+
+.coach-main {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 36px 20px 56px;
+}
+
+.coach-shell,
+.coach-mini-section {
+  border: 2px solid var(--line);
+  background: var(--paper);
+}
+
+.coach-shell {
+  padding: clamp(18px, 4vw, 30px);
+}
+
+.coach-intro {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  padding-bottom: 22px;
+  border-bottom: 2px solid var(--line);
+}
+
+.coach-intro__icon {
+  width: 86px;
+  height: auto;
+  display: block;
+}
+
+.coach-title {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+  font-size: clamp(30px, 7vw, 52px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.coach-intro p {
+  margin: 8px 0 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.coach-chat {
+  display: grid;
+  gap: 12px;
+  padding: 22px 0;
+}
+
+.coach-bubble {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 760px;
+  padding: 14px 16px;
+  border: 2px solid var(--line);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.coach-bubble strong {
+  font-size: 16px;
+}
+
+.coach-bubble--coach {
+  justify-self: start;
+  background: var(--paper);
+}
+
+.coach-bubble--answer {
+  justify-self: end;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.coach-question-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.coach-question-grid button {
+  appearance: none;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 2px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.coach-question-grid button.is-active {
+  background: var(--rust);
+  color: #ffffff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .coach-question-grid button:hover {
+    transform: translateY(-2px);
+    background: rgba(10, 10, 10, 0.06);
+  }
+
+  .coach-question-grid button.is-active:hover {
+    background: var(--rust);
+  }
+}
+
+.coach-mini-section {
+  margin-top: 20px;
+  padding: clamp(18px, 4vw, 26px);
+}
+
+.coach-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.coach-section-head h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.coach-quiz-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.coach-quiz-card {
+  border: 2px solid var(--line);
+  padding: 16px;
+}
+
+.coach-quiz-card h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.coach-source-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.coach-source-list a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 2px solid var(--line);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.coach-source-list strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 28px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 11px;
+}
+
+.coach-source-list span {
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .coach-main {
+    padding: 22px 14px 42px;
+  }
+
+  .coach-intro {
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .coach-intro__icon {
+    width: 70px;
+  }
+
+  .coach-bubble {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .coach-question-grid,
+  .coach-quiz-row,
+  .coach-source-list {
+    grid-template-columns: 1fr;
+  }
+
+  .coach-question-grid button {
+    text-align: center;
+  }
+
+  .coach-section-head {
+    display: block;
+  }
+}
+
 /* 今後の予定（手入力）・お知らせ（スプレッドシート自動表示）共通のリスト */
 .info-list {
   list-style: none;
