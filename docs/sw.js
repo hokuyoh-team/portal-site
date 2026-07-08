@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hokuyoh-portal-v20260708d';
+const CACHE_NAME = 'hokuyoh-portal-v20260708e';
 const APP_SHELL = [
   './',
   './index.html',
@@ -7,6 +7,7 @@ const APP_SHELL = [
   './style.css',
   './site.js',
   './videos.js',
+  './portal-coach-faq.csv',
   './site.webmanifest',
   './assets/favicon.png',
   './assets/app-icon-192.png',

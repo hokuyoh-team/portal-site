@@ -13,6 +13,9 @@
 クイズ元データ: Googleスプレッドシート
 https://docs.google.com/spreadsheets/d/1uEU5AHv6Q3YjtuE52wO_QJ4CEBLhBMUxK8cDeeucjtY/edit?usp=drive_link
 予備データ: docs/portal-coach-quiz.csv
+FAQ元データ: Googleスプレッドシート
+https://docs.google.com/spreadsheets/d/1Y5KFKY2POOxkDSDXpseouQYrE15ttiDSerKiHXKyHdQ/edit?usp=sharing
+予備データ: docs/portal-coach-faq.csv
 
 資料フォルダ
 01_公式ルール資料
@@ -66,6 +69,7 @@ source_folder: 根拠にする資料フォルダ
 ヒアリング前の仮FAQとして、保護者が迷いやすい項目を置く。
 ヒアリング後に北陽の運用へ合わせて更新する。
 2026-07-08にDrive内の01_公式ルール資料を確認し、公式資料ベースの回答へ更新した。
+2026-07-08にFAQをGoogleスプレッドシート管理へ変更した。statusが「公開」の行だけ表示し、display_order順に並べる。読み込みに失敗した場合はdocs/portal-coach-faq.csvを予備データとして表示する。
 確認した主な資料:
 01_2026ミニバスケットボール競技規則.pdf
 04_2026ミニバスケットボール適用規則の相違点.pdf
