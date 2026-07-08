@@ -24,6 +24,7 @@
     </a>
     <nav class="header__nav" aria-label="サイト内リンク">
       <a class="header__link jk" href="#news">お知らせ</a>
+      <a class="header__link jk" href="#team-docs">チーム資料</a>
       <a class="header__icon-link" href="https://www.instagram.com/hokuyohboys?igsh=MXd3dXAxMHlmZWVmdQ==" target="_blank" rel="noopener" aria-label="Instagramを開く">
         <img src="assets/icons/instagram.png" alt="" aria-hidden="true">
       </a>
@@ -86,17 +87,20 @@
     </div>
     <div class="menu__grid">
 
-      <a class="tile" href="#news">
+      <div class="tile" id="team-docs">
         <div class="tile__photo">
-          <img class="tile__icon" src="assets/icons/news.png" alt="" aria-hidden="true">
+          <img class="tile__icon" src="assets/icons/tournament.png" alt="" aria-hidden="true">
         </div>
         <div class="tile__caption">
-          <h2 class="tile__title jp-heading">お知らせ</h2>
-          <p class="tile__eyebrow jk">News</p>
-          <p class="tile__desc">チームからの連絡事項</p>
-          <div class="tile__actions"><span class="btn btn--fill jk">お知らせを見る</span></div>
+          <h2 class="tile__title jp-heading">チーム資料</h2>
+          <p class="tile__eyebrow jk">Team Docs</p>
+          <p class="tile__desc">心得・総会資料・注意事項など</p>
+          <div class="tile__actions">
+            <a class="btn btn--fill jk" href="https://drive.google.com/drive/folders/1AnGZXAjVahS-2W9rD3IKSwdhG3kyehwF?usp=drive_link" target="_blank" rel="noopener">資料を見る</a>
+            <a class="btn btn--line jk" href="https://drive.google.com/drive/folders/1AnGZXAjVahS-2W9rD3IKSwdhG3kyehwF?usp=drive_link" target="_blank" rel="noopener">管理者格納</a>
+          </div>
         </div>
-      </a>
+      </div>
 
       <a class="tile" href="#videos">
         <div class="tile__photo">
@@ -186,7 +190,6 @@
         </div>
       </div>
 
-      <!-- TODO: 「見る」を06_大会資料フォルダの共有URLに差し替えてください -->
       <div class="tile">
         <div class="tile__photo">
           <img class="tile__icon" src="assets/icons/tournament.png" alt="" aria-hidden="true">
@@ -194,7 +197,7 @@
         <div class="tile__caption">
           <h2 class="tile__title jp-heading">大会資料</h2>
           <p class="tile__eyebrow jk">Tournament Docs</p>
-          <p class="tile__desc">大会案内や資料など</p>
+          <p class="tile__desc">大会案内・要項・組み合わせなど</p>
           <div class="tile__actions">
             <a class="btn btn--fill jk" href="https://drive.google.com/drive/folders/1o-R9FhZq-f7QU7wPO_rIx9HqpvuDlwAym5HY-eBxT8ukphk2DDoiSA0kKW3P3Z1fhG0e75tB?usp=drive_link" target="_blank" rel="noopener">資料を見る</a>
             <a class="btn btn--line jk" href="https://docs.google.com/forms/d/e/1FAIpQLSfRKfWQB95q3oewC-67UZIcWHzhofkTNKBOswudCxiXgHa-Vg/viewform" target="_blank" rel="noopener">アップロード</a>
@@ -249,8 +252,11 @@
         この一覧は、ファイルをダブルクリックして開いた場合は表示されません（ブラウザの制限のためです）。Live Serverで開くか、公開後のURLで見てください。今すぐ確認したい場合は<a href="https://docs.google.com/spreadsheets/d/1TBYDvLzq03UqUlb8W3bAm4CMuBT7OX4D_l5q2GUWxJc/edit?usp=sharing" target="_blank" rel="noopener">スプレッドシートを直接開く</a>こともできます。
       </p>
       <p class="video-list__more">
-        過去の試合動画も含めて全部見たい場合は<a href="all-videos.html?type=game">こちらの一覧ページ</a>をご覧ください。
+        過去の試合動画も含めて全部見たい場合はこちらから確認できます。
       </p>
+      <div class="video-list__actions">
+        <a class="btn btn--fill jk" href="all-videos.html?type=game">試合動画をすべて見る</a>
+      </div>
     </div>
   </section>
 
@@ -266,8 +272,12 @@
         この一覧は、ファイルをダブルクリックして開いた場合は表示されません（ブラウザの制限のためです）。Live Serverで開くか、公開後のURLで見てください。今すぐ確認したい場合は<a href="https://docs.google.com/spreadsheets/d/1ega5Ifh2ofvAGzc5wyMstgb_cxGswxYnz0XauzWERcs/edit" target="_blank" rel="noopener">スプレッドシートを直接開く</a>こともできます。
       </p>
       <p class="video-list__more">
-        過去の投稿も含めて全部見たい場合は<a href="all-videos.html?type=practice">こちらの一覧ページ</a>をご覧ください。動画をお持ちの方は<a href="https://docs.google.com/forms/d/e/1FAIpQLSfDgkNKnWEdS__shD3UpoqWKWRAsYk61wl57OmT8T6432GQew/viewform" target="_blank" rel="noopener">こちらのフォーム</a>から共有できます。
+        過去の投稿も含めて全部見たい場合や、動画を共有したい場合はこちらから進めます。
       </p>
+      <div class="video-list__actions">
+        <a class="btn btn--fill jk" href="all-videos.html?type=practice">練習動画をすべて見る</a>
+        <a class="btn btn--line jk" href="https://docs.google.com/forms/d/e/1FAIpQLSfDgkNKnWEdS__shD3UpoqWKWRAsYk61wl57OmT8T6432GQew/viewform" target="_blank" rel="noopener">動画を投稿</a>
+      </div>
     </div>
   </section>
 
@@ -287,8 +297,8 @@
   </div>
 </footer>
 
-<script src="site.js?v=20260708" defer></script>
-<script src="videos.js?v=20260708" defer></script>
+<script src="site.js?v=20260708b" defer></script>
+<script src="videos.js?v=20260708b" defer></script>
 
 </body>
 </html>

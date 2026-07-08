@@ -38,6 +38,11 @@
     return d.getFullYear() + '年' + (d.getMonth() + 1) + '月';
   }
 
+  function formatYearLabel(ms) {
+    if (ms == null) return '';
+    return new Date(ms).getFullYear() + '年度';
+  }
+
   function isRecent(sortKey) {
     return sortKey != null && (Date.now() - sortKey) <= 7 * 24 * 60 * 60 * 1000;
   }
@@ -142,19 +147,43 @@
   }
 
   function renderFilterableMatchArchive(rows, options) {
+    var yearFilterEl = document.getElementById(options.matchYearFilterId);
     var filterEl = document.getElementById(options.matchMonthFilterId);
     var listEl = document.getElementById(options.listId);
-    if (!filterEl || !listEl) return false;
+    if (!yearFilterEl || !filterEl || !listEl) return false;
 
-    var months = [];
+    var years = [];
     rows.forEach(function (item) {
-      var month = formatMonth(item.sortKey);
-      if (month && months.indexOf(month) === -1) months.push(month);
+      var year = formatYearLabel(item.sortKey);
+      if (year && years.indexOf(year) === -1) years.push(year);
     });
 
-    var activeMonth = months[0] || '';
+    var activeYear = years[0] || '';
+    var activeMonth = '';
 
-    function renderButtons() {
+    function getMonthsForActiveYear() {
+      var months = [];
+      rows.forEach(function (item) {
+        if (formatYearLabel(item.sortKey) !== activeYear) return;
+        var month = formatMonth(item.sortKey);
+        if (month && months.indexOf(month) === -1) months.push(month);
+      });
+      return months;
+    }
+
+    var months = getMonthsForActiveYear();
+    activeMonth = months[0] || '';
+
+    function renderYearButtons() {
+      yearFilterEl.innerHTML = years.map(function (year) {
+        var activeClass = year === activeYear ? ' is-active' : '';
+        return '<button class="video-filter__button jk' + activeClass + '" type="button" data-match-year="' + escapeAttr(year) + '">' + escapeHtml(year) + '</button>';
+      }).join('');
+    }
+
+    function renderMonthButtons() {
+      months = getMonthsForActiveYear();
+      if (months.indexOf(activeMonth) === -1) activeMonth = months[0] || '';
       filterEl.innerHTML = months.map(function (month) {
         var activeClass = month === activeMonth ? ' is-active' : '';
         return '<button class="video-filter__button jk' + activeClass + '" type="button" data-match-month="' + escapeAttr(month) + '">' + escapeHtml(month) + '</button>';
@@ -163,7 +192,7 @@
 
     function renderList() {
       var monthRows = rows.filter(function (item) {
-        return formatMonth(item.sortKey) === activeMonth;
+        return formatYearLabel(item.sortKey) === activeYear && formatMonth(item.sortKey) === activeMonth;
       });
       var tournamentGroups = [];
 
@@ -199,11 +228,22 @@
       var button = event.target.closest('[data-match-month]');
       if (!button) return;
       activeMonth = button.getAttribute('data-match-month') || activeMonth;
-      renderButtons();
+      renderMonthButtons();
       renderList();
     });
 
-    renderButtons();
+    yearFilterEl.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-match-year]');
+      if (!button) return;
+      activeYear = button.getAttribute('data-match-year') || activeYear;
+      activeMonth = '';
+      renderYearButtons();
+      renderMonthButtons();
+      renderList();
+    });
+
+    renderYearButtons();
+    renderMonthButtons();
     renderList();
     return true;
   }
@@ -382,6 +422,7 @@
     listId: 'video-list-items-all',
     fallbackId: 'video-list-fallback-all',
     maxItems: 1000,
+    matchYearFilterId: 'match-year-filter',
     matchMonthFilterId: 'match-month-filter',
     renderItem: function (item) {
       var title = item.opponent || item.title || '（対戦相手なし）';

@@ -949,6 +949,17 @@ a {
   color: var(--ink-soft);
 }
 
+.video-list__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.video-list__actions .btn {
+  flex: 0 1 auto;
+}
+
 /* ===== 管理者チェックページ ===== */
 .admin__lead {
   margin: 0;
