@@ -1,33 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-labelledby="title desc">
-  <title id="title">ミニバス会場準備用コート図</title>
-  <desc id="desc">コート、センターライン、フリースローライン、ベンチ、TO席、得点板の位置を確認するための簡易図です。</desc>
-  <rect width="900" height="540" fill="#fff"/>
-  <rect x="42" y="42" width="816" height="456" fill="#fff" stroke="#111" stroke-width="6"/>
-  <line x1="450" y1="42" x2="450" y2="498" stroke="#111" stroke-width="4"/>
-  <circle cx="450" cy="270" r="58" fill="none" stroke="#111" stroke-width="4"/>
-  <circle cx="450" cy="270" r="7" fill="#111"/>
-  <line x1="42" y1="128" x2="188" y2="128" stroke="#111" stroke-width="4"/>
-  <line x1="42" y1="412" x2="188" y2="412" stroke="#111" stroke-width="4"/>
-  <line x1="188" y1="128" x2="188" y2="412" stroke="#111" stroke-width="4"/>
-  <line x1="858" y1="128" x2="712" y2="128" stroke="#111" stroke-width="4"/>
-  <line x1="858" y1="412" x2="712" y2="412" stroke="#111" stroke-width="4"/>
-  <line x1="712" y1="128" x2="712" y2="412" stroke="#111" stroke-width="4"/>
-  <line x1="188" y1="174" x2="42" y2="174" stroke="#111" stroke-width="3" stroke-dasharray="10 8"/>
-  <line x1="712" y1="174" x2="858" y2="174" stroke="#111" stroke-width="3" stroke-dasharray="10 8"/>
-  <path d="M188 168a102 102 0 0 1 0 204" fill="none" stroke="#111" stroke-width="4"/>
-  <path d="M712 168a102 102 0 0 0 0 204" fill="none" stroke="#111" stroke-width="4"/>
-  <circle cx="74" cy="270" r="8" fill="#111"/>
-  <circle cx="826" cy="270" r="8" fill="#111"/>
-  <rect x="330" y="10" width="240" height="28" fill="#111"/>
-  <text x="450" y="30" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#fff">TO席・得点板</text>
-  <rect x="120" y="506" width="250" height="26" fill="#eee" stroke="#111" stroke-width="2"/>
-  <text x="245" y="525" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#111">ベンチ</text>
-  <rect x="530" y="506" width="250" height="26" fill="#eee" stroke="#111" stroke-width="2"/>
-  <text x="655" y="525" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#111">ベンチ</text>
-  <text x="450" y="85" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111">センターライン</text>
-  <text x="188" y="154" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#111">フリースローライン</text>
-  <text x="712" y="154" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#111">フリースローライン</text>
-  <text x="74" y="250" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#111">リング</text>
-  <text x="826" y="250" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#111">リング</text>
-  <text x="450" y="468" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#666">寸法・ラインの最終確認は公式資料・大会要項に合わせてください</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">ミニバスケットボールコート寸法の要点</title>
+  <desc id="desc">公式資料をもとに、コート全体、ライン、フリースローライン、センターサークル、ベンチエリア、TO席を確認するための図です。</desc>
+  <rect width="960" height="640" fill="#fff"/>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+  </defs>
+
+  <text x="480" y="38" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="700" fill="#111">ミニバスケットボールコート 寸法の要点</text>
+  <text x="480" y="64" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#666">公式資料の図を保護者向けに簡略化。最終確認は大会要項・会場指示を優先。</text>
+
+  <rect x="120" y="105" width="600" height="420" fill="#fff" stroke="#111" stroke-width="5"/>
+  <line x1="420" y1="105" x2="420" y2="525" stroke="#111" stroke-width="3"/>
+  <circle cx="420" cy="315" r="42" fill="none" stroke="#111" stroke-width="3"/>
+  <circle cx="420" cy="315" r="5" fill="#111"/>
+
+  <line x1="120" y1="188" x2="235" y2="188" stroke="#111" stroke-width="3"/>
+  <line x1="120" y1="442" x2="235" y2="442" stroke="#111" stroke-width="3"/>
+  <line x1="235" y1="188" x2="235" y2="442" stroke="#111" stroke-width="3"/>
+  <path d="M235 220a95 95 0 0 1 0 190" fill="none" stroke="#111" stroke-width="3"/>
+  <circle cx="147" cy="315" r="7" fill="#111"/>
+
+  <line x1="720" y1="188" x2="605" y2="188" stroke="#111" stroke-width="3"/>
+  <line x1="720" y1="442" x2="605" y2="442" stroke="#111" stroke-width="3"/>
+  <line x1="605" y1="188" x2="605" y2="442" stroke="#111" stroke-width="3"/>
+  <path d="M605 220a95 95 0 0 0 0 190" fill="none" stroke="#111" stroke-width="3"/>
+  <circle cx="693" cy="315" r="7" fill="#111"/>
+
+  <rect x="742" y="150" width="78" height="136" fill="#f5f5f5" stroke="#111" stroke-width="2"/>
+  <rect x="742" y="344" width="78" height="136" fill="#f5f5f5" stroke="#111" stroke-width="2"/>
+  <text x="782" y="220" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#111" writing-mode="tb">チームベンチ</text>
+  <text x="782" y="414" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#111" writing-mode="tb">チームベンチ</text>
+
+  <rect x="838" y="286" width="82" height="58" fill="#111"/>
+  <text x="879" y="309" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#fff">TO席</text>
+  <text x="879" y="329" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#fff">得点板</text>
+
+  <line x1="120" y1="92" x2="720" y2="92" stroke="#111" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="420" y="86" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#111">横 15m-12m</text>
+  <line x1="96" y1="105" x2="96" y2="525" stroke="#111" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="78" y="315" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#111" transform="rotate(-90 78 315)">縦 28m-22m</text>
+
+  <line x1="144" y1="188" x2="144" y2="315" stroke="#111" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="165" y="253" font-family="sans-serif" font-size="13" fill="#111">4.00m</text>
+  <line x1="120" y1="548" x2="235" y2="548" stroke="#111" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="178" y="573" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#111">長方形制限区域 4.90m</text>
+  <line x1="420" y1="315" x2="462" y2="315" stroke="#111" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="470" y="320" font-family="sans-serif" font-size="13" fill="#111">半径 1.80m</text>
+
+  <text x="420" y="126" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#111">センターライン</text>
+  <text x="235" y="178" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#111">フリースローライン</text>
+  <text x="605" y="178" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#111">フリースローライン</text>
+  <text x="147" y="301" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#111">リング</text>
+  <text x="693" y="301" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#111">リング</text>
+
+  <rect x="72" y="585" width="816" height="36" fill="#f7f7f7" stroke="#111" stroke-width="2"/>
+  <text x="480" y="608" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#111">ライン幅 5cm / リング上端 2.60m / ボール 5号または軽量5号</text>
 </svg>
