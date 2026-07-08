@@ -141,6 +141,73 @@
     return true;
   }
 
+  function renderFilterableMatchArchive(rows, options) {
+    var filterEl = document.getElementById(options.matchMonthFilterId);
+    var listEl = document.getElementById(options.listId);
+    if (!filterEl || !listEl) return false;
+
+    var months = [];
+    rows.forEach(function (item) {
+      var month = formatMonth(item.sortKey);
+      if (month && months.indexOf(month) === -1) months.push(month);
+    });
+
+    var activeMonth = months[0] || '';
+
+    function renderButtons() {
+      filterEl.innerHTML = months.map(function (month) {
+        var activeClass = month === activeMonth ? ' is-active' : '';
+        return '<button class="video-filter__button jk' + activeClass + '" type="button" data-match-month="' + escapeAttr(month) + '">' + escapeHtml(month) + '</button>';
+      }).join('');
+    }
+
+    function renderList() {
+      var monthRows = rows.filter(function (item) {
+        return formatMonth(item.sortKey) === activeMonth;
+      });
+      var tournamentGroups = [];
+
+      monthRows.forEach(function (item) {
+        var label = item.tournament || '大会名なし';
+        var group = tournamentGroups.find(function (candidate) {
+          return candidate.label === label;
+        });
+        if (!group) {
+          group = { label: label, items: [] };
+          tournamentGroups.push(group);
+        }
+        group.items.push(item);
+      });
+
+      listEl.innerHTML = tournamentGroups.length
+        ? tournamentGroups.map(function (group, index) {
+          return (
+            '<li class="video-tournament">' +
+            '<details' + (index === 0 ? ' open' : '') + '>' +
+            '<summary><span class="video-tournament__title jp-heading">' + escapeHtml(group.label) + '</span><span class="video-tournament__count jk">' + group.items.length + '本</span></summary>' +
+            '<ul class="video-list video-list--grouped">' +
+            group.items.map(options.renderItem).join('') +
+            '</ul>' +
+            '</details>' +
+            '</li>'
+          );
+        }).join('')
+        : '<li class="video-list__loading">この月の動画はまだありません。</li>';
+    }
+
+    filterEl.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-match-month]');
+      if (!button) return;
+      activeMonth = button.getAttribute('data-match-month') || activeMonth;
+      renderButtons();
+      renderList();
+    });
+
+    renderButtons();
+    renderList();
+    return true;
+  }
+
   // ページ内に対象の要素がなければ何もしない（index.html / all-videos.html の両方から
   // このファイルを読み込むが、一致する要素がある分だけ表示される）
   function loadSheetList(options) {
@@ -168,6 +235,7 @@
 
         rows.sort(function (a, b) { return b.sortKey - a.sortKey; });
         var latest = rows.slice(0, options.maxItems || 10);
+        if (options.matchMonthFilterId && renderFilterableMatchArchive(latest, options)) return;
         if (options.filterId && renderFilterablePracticeList(latest, options)) return;
 
         listEl.innerHTML = options.groupLabel
@@ -180,16 +248,20 @@
       });
   }
 
-  // 試合動画：動画リンク一覧スプレッドシート（日付｜試合｜対戦相手｜youtubeリンク）
+  // 試合動画：動画リンク一覧スプレッドシート（日付｜大会名｜対戦相手｜youtubeリンク）
   var matchVideos = {
     sheetId: '1TBYDvLzq03UqUlb8W3bAm4CMuBT7OX4D_l5q2GUWxJc',
     mapRow: function (cells, parseDate) {
+      var tournament = cells[1] && cells[1].v;
+      var opponent = cells[2] && cells[2].v;
       return {
         sortKey: parseDate(cells[0] && cells[0].v),
         date: cells[0] && cells[0].f,
-        title: [cells[1] && cells[1].v, cells[2] && cells[2].v].filter(Boolean).join(' vs '),
+        tournament: tournament,
+        opponent: opponent,
+        title: [tournament, opponent].filter(Boolean).join(' vs '),
         url: cells[3] && cells[3].v,
-        category: cells[4] && cells[4].v
+        category: tournament
       };
     },
     renderItem: function (item) {
@@ -310,8 +382,16 @@
     listId: 'video-list-items-all',
     fallbackId: 'video-list-fallback-all',
     maxItems: 1000,
-    groupLabel: function (item) {
-      return item.category || formatMonth(item.sortKey);
+    matchMonthFilterId: 'match-month-filter',
+    renderItem: function (item) {
+      var title = item.opponent || item.title || '（対戦相手なし）';
+      return (
+        '<li class="video-item">' +
+        '<span class="video-item__date ' + categoryClass(item.category, '試合・大会') + '">' + escapeHtml(item.date) + '</span>' +
+        '<span class="video-item__title">' + renderNewTag(item) + escapeHtml(title) + '</span>' +
+        '<a class="video-item__link" href="' + escapeAttr(item.url) + '" target="_blank" rel="noopener">▶ 見る</a>' +
+        '</li>'
+      );
     }
   }));
 

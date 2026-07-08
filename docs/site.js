@@ -105,7 +105,29 @@
     });
   }
 
+  function setupVideoModePage() {
+    var sections = document.querySelectorAll('[data-video-section]');
+    if (!sections.length) return;
+
+    var params = new URLSearchParams(window.location.search);
+    var mode = params.get('type');
+    if (mode !== 'game' && mode !== 'practice') mode = 'game';
+
+    sections.forEach(function (section) {
+      section.hidden = section.getAttribute('data-video-section') !== mode;
+    });
+
+    document.querySelectorAll('[data-video-mode-link]').forEach(function (link) {
+      if (link.getAttribute('data-video-mode-link') === mode) {
+        link.classList.add('is-active');
+      } else {
+        link.classList.remove('is-active');
+      }
+    });
+  }
+
   showLastModified();
   showDeadlineBadges();
   showMonthlyDutyDeadline();
+  setupVideoModePage();
 })();

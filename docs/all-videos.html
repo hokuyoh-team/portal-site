@@ -33,12 +33,17 @@
 </header>
 
 <main class="container">
+  <nav class="video-mode-nav" aria-label="動画種別の切り替え">
+    <a class="video-mode-nav__button jk" href="all-videos.html?type=game" data-video-mode-link="game">試合動画</a>
+    <a class="video-mode-nav__button jk" href="all-videos.html?type=practice" data-video-mode-link="practice">練習メニュー動画</a>
+  </nav>
 
-  <section class="section" id="videos" style="padding-top: 48px;">
+  <section class="section" id="videos" data-video-section="game" style="padding-top: 48px;">
     <div class="section__inner">
       <div class="section__head">
         <div><span class="section__eyebrow jk">GAME FILM</span><h2 class="section__title jp-heading">試合動画（全件）</h2></div>
       </div>
+      <div class="video-filter" id="match-month-filter" aria-label="試合動画の月選択"></div>
       <ul class="video-list" id="video-list-items-all">
         <li class="video-list__loading">読み込み中です…</li>
       </ul>
@@ -48,7 +53,7 @@
     </div>
   </section>
 
-  <section class="section" id="videos-practice">
+  <section class="section" id="videos-practice" data-video-section="practice">
     <div class="section__inner">
       <div class="section__head">
         <div><span class="section__eyebrow jk">PRACTICE FILM</span><h2 class="section__title jp-heading">練習メニュー動画（全件）</h2></div>
@@ -79,8 +84,8 @@
   </div>
 </footer>
 
-<script src="site.js" defer></script>
-<script src="videos.js" defer></script>
+<script src="site.js?v=20260708" defer></script>
+<script src="videos.js?v=20260708" defer></script>
 
 </body>
 </html>

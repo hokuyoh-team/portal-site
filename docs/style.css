@@ -842,6 +842,46 @@ a {
   padding-block: 12px;
 }
 
+.video-tournament {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  border: 2px solid var(--line);
+}
+
+.video-tournament details {
+  background: var(--paper);
+}
+
+.video-tournament summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.video-tournament summary::marker {
+  color: var(--ink);
+}
+
+.video-tournament__title {
+  font-size: 15px;
+}
+
+.video-tournament__count {
+  flex-shrink: 0;
+  padding: 3px 7px;
+  border: 2px solid var(--line);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.video-tournament .video-list--grouped {
+  padding: 0 14px 8px;
+}
+
 .video-filter {
   display: flex;
   flex-wrap: wrap;
@@ -861,6 +901,32 @@ a {
 }
 
 .video-filter__button.is-active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.video-mode-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 24px 0;
+}
+
+.video-mode-nav__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.video-mode-nav__button.is-active {
   background: var(--ink);
   color: var(--paper);
 }
