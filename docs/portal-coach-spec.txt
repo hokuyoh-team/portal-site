@@ -14,7 +14,7 @@
 https://docs.google.com/spreadsheets/d/1uEU5AHv6Q3YjtuE52wO_QJ4CEBLhBMUxK8cDeeucjtY/edit?usp=drive_link
 予備データ: docs/portal-coach-quiz.csv
 FAQ元データ: Googleスプレッドシート
-https://docs.google.com/spreadsheets/d/1Y5KFKY2POOxkDSDXpseouQYrE15ttiDSerKiHXKyHdQ/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1zZyZNdedMka7htpHacT-870NYOZaIa_CIEMDiz73LXk/edit?usp=sharing
 予備データ: docs/portal-coach-faq.csv
 
 資料フォルダ
