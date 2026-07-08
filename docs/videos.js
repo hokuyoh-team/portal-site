@@ -288,6 +288,59 @@
       });
   }
 
+  function fetchSheetRows(options) {
+    var feedUrl = 'https://docs.google.com/spreadsheets/d/' + options.sheetId + '/gviz/tq?tqx=out:json';
+    var isValid = options.isValid || function (item) {
+      return item.url && /^https?:\/\//i.test(item.url);
+    };
+
+    return fetch(feedUrl)
+      .then(function (res) { return res.text(); })
+      .then(function (text) {
+        var match = text.match(/setResponse\(([\s\S]*)\);?\s*$/);
+        if (!match) throw new Error('unexpected response format');
+
+        var data = JSON.parse(match[1]);
+        return (data.table.rows || [])
+          .map(function (row) { return options.mapRow(row.c || [], parseGvizDate); })
+          .filter(function (item) { return item && item.sortKey != null && isValid(item); });
+      });
+  }
+
+  function loadMixedLatestVideos(options) {
+    var listEl = document.getElementById(options.listId);
+    if (!listEl) return;
+
+    Promise.all([
+      fetchSheetRows(Object.assign({}, matchVideos, { videoKind: '試合' })),
+      fetchSheetRows(Object.assign({}, practiceVideos, { videoKind: '練習' }))
+    ])
+      .then(function (results) {
+        var rows = results[0].concat(results[1]);
+        if (!rows.length) throw new Error('no rows');
+
+        rows.sort(function (a, b) { return b.sortKey - a.sortKey; });
+        listEl.innerHTML = rows.slice(0, options.maxItems || 3).map(function (item) {
+          var isPractice = item.source === 'practice';
+          var label = isPractice ? '練習' : '試合';
+          var title = isPractice ? (item.title || '（タイトルなし）') : (item.title || item.opponent || '（試合名なし）');
+          return (
+            '<li>' +
+            '<span class="today-video-list__date ' + categoryClass(item.category, label) + '">' + escapeHtml(item.date) + '</span>' +
+            '<a href="' + escapeAttr(item.url) + '" target="_blank" rel="noopener">' +
+            renderNewTag(item) +
+            '<span class="today-video-list__type jk">' + escapeHtml(label) + '</span>' +
+            escapeHtml(title) +
+            '</a>' +
+            '</li>'
+          );
+        }).join('');
+      })
+      .catch(function () {
+        listEl.innerHTML = '';
+      });
+  }
+
   // 試合動画：動画リンク一覧スプレッドシート（日付｜大会名｜対戦相手｜youtubeリンク）
   var matchVideos = {
     sheetId: '1TBYDvLzq03UqUlb8W3bAm4CMuBT7OX4D_l5q2GUWxJc',
@@ -301,7 +354,8 @@
         opponent: opponent,
         title: [tournament, opponent].filter(Boolean).join(' vs '),
         url: cells[3] && cells[3].v,
-        category: tournament
+        category: tournament,
+        source: 'match'
       };
     },
     renderItem: function (item) {
@@ -341,7 +395,8 @@
         title: cells[2] && cells[2].v,
         category: normalizePracticeCategory(category),
         name: name,
-        url: cells[1] && cells[1].v
+        url: cells[1] && cells[1].v,
+        source: 'practice'
       };
     },
     renderItem: function (item) {
@@ -399,11 +454,11 @@
     maxItems: 5
   }));
 
-  // ホーム画面（index.html）：一覧が長くなりすぎないよう最新分だけ表示
-  loadSheetList(Object.assign({}, todayMatchVideos, {
+  // ホーム画面（index.html）：試合動画・練習動画を混ぜて最新3件だけ表示
+  loadMixedLatestVideos({
     listId: 'today-video-list-items',
     maxItems: 3
-  }));
+  });
 
   loadSheetList(Object.assign({}, matchVideos, {
     listId: 'video-list-items',
