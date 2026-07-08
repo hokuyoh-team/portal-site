@@ -126,8 +126,20 @@
     });
   }
 
+  function registerServiceWorker() {
+    if (!('serviceWorker' in navigator)) return;
+    if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') return;
+
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js', { scope: './' }).catch(function () {
+        // ホーム画面追加に必須ではないため、登録失敗時は表示を止めません。
+      });
+    });
+  }
+
   showLastModified();
   showDeadlineBadges();
   showMonthlyDutyDeadline();
   setupVideoModePage();
+  registerServiceWorker();
 })();

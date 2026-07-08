@@ -1,15 +1,28 @@
 {
   "name": "北陽男子ミニバス ポータル",
   "short_name": "北陽ポータル",
-  "start_url": "/portal-site/",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
   "background_color": "#ffffff",
-  "theme_color": "#c85a2a",
+  "theme_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "categories": ["sports", "education", "productivity"],
+  "lang": "ja",
   "icons": [
+    {
+      "src": "assets/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "assets/app-icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "assets/apple-touch-icon.png",
