@@ -79,6 +79,68 @@
     }).join('');
   }
 
+  var practiceCategories = [
+    'ドリブル',
+    'シュート',
+    'パス',
+    'デフェンス練習',
+    'オフェンス練習',
+    '基礎練習'
+  ];
+
+  function normalizePracticeCategory(value) {
+    var label = String(value || '').trim();
+    if (label === 'デフェンス' || label === 'ディフェンス' || label === 'ディフェンス練習') {
+      return 'デフェンス練習';
+    }
+    if (label === 'オフェンス') {
+      return 'オフェンス練習';
+    }
+    return practiceCategories.indexOf(label) !== -1 ? label : '基礎練習';
+  }
+
+  function isPracticeCategory(value) {
+    return normalizePracticeCategory(value) !== '基礎練習' || String(value || '').trim() === '基礎練習';
+  }
+
+  function renderFilterablePracticeList(rows, options) {
+    var filterEl = document.getElementById(options.filterId);
+    var listEl = document.getElementById(options.listId);
+    if (!filterEl || !listEl) return false;
+
+    var activeCategory = 'すべて';
+    var categories = ['すべて'].concat(practiceCategories);
+
+    function renderButtons() {
+      filterEl.innerHTML = categories.map(function (category) {
+        var activeClass = category === activeCategory ? ' is-active' : '';
+        return '<button class="video-filter__button jk' + activeClass + '" type="button" data-practice-category="' + escapeAttr(category) + '">' + escapeHtml(category) + '</button>';
+      }).join('');
+    }
+
+    function renderList() {
+      var filteredRows = activeCategory === 'すべて'
+        ? rows
+        : rows.filter(function (item) { return item.category === activeCategory; });
+
+      listEl.innerHTML = filteredRows.length
+        ? filteredRows.map(options.renderItem).join('')
+        : '<li class="video-list__loading">このカテゴリの動画はまだありません。</li>';
+    }
+
+    filterEl.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-practice-category]');
+      if (!button) return;
+      activeCategory = button.getAttribute('data-practice-category') || 'すべて';
+      renderButtons();
+      renderList();
+    });
+
+    renderButtons();
+    renderList();
+    return true;
+  }
+
   // ページ内に対象の要素がなければ何もしない（index.html / all-videos.html の両方から
   // このファイルを読み込むが、一致する要素がある分だけ表示される）
   function loadSheetList(options) {
@@ -106,6 +168,8 @@
 
         rows.sort(function (a, b) { return b.sortKey - a.sortKey; });
         var latest = rows.slice(0, options.maxItems || 10);
+        if (options.filterId && renderFilterablePracticeList(latest, options)) return;
+
         listEl.innerHTML = options.groupLabel
           ? renderGroupedList(latest, options)
           : latest.map(options.renderItem).join('');
@@ -150,16 +214,21 @@
     }
   });
 
-  // 練習メニュー動画：投稿フォームの回答一覧（タイムスタンプ｜URL｜タイトル・おすすめポイント｜お名前）
+  // 練習メニュー動画：投稿フォームの回答一覧（タイムスタンプ｜URL｜タイトル・おすすめポイント｜カテゴリ｜お名前）
   var practiceVideos = {
     sheetId: '1ega5Ifh2ofvAGzc5wyMstgb_cxGswxYnz0XauzWERcs',
     mapRow: function (cells, parseDate) {
       var sortKey = parseDate(cells[0] && cells[0].v);
+      var fourth = cells[3] && cells[3].v;
+      var fifth = cells[4] && cells[4].v;
+      var category = isPracticeCategory(fourth) ? fourth : fifth;
+      var name = isPracticeCategory(fourth) ? fifth : fourth;
       return {
         sortKey: sortKey,
         date: formatDate(sortKey),
         title: cells[2] && cells[2].v,
-        name: cells[3] && cells[3].v,
+        category: normalizePracticeCategory(category),
+        name: name,
         url: cells[1] && cells[1].v
       };
     },
@@ -169,7 +238,7 @@
       return (
         '<li class="video-item">' +
         '<span class="video-item__date ' + categoryClass(null, '練習') + '">' + escapeHtml(item.date) + '</span>' +
-        '<span class="video-item__title">' + renderNewTag(item) + escapeHtml(title) + '</span>' +
+        '<span class="video-item__title">' + renderNewTag(item) + '<span class="video-item__category">' + escapeHtml(item.category) + '</span>' + escapeHtml(title) + '</span>' +
         '<a class="video-item__link" href="' + escapeAttr(item.url) + '" target="_blank" rel="noopener">▶ 見る</a>' +
         '</li>'
       );
@@ -250,8 +319,6 @@
     listId: 'practice-list-items-all',
     fallbackId: 'practice-list-fallback-all',
     maxItems: 1000,
-    groupLabel: function (item) {
-      return formatMonth(item.sortKey);
-    }
+    filterId: 'practice-category-filter'
   }));
 })();
